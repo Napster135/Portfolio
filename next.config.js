@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     experimental: {
-      appDir: true,
+      //appDir: true,
     },
     i18n: {
       locales: ['en-US', 'es-ES'],
