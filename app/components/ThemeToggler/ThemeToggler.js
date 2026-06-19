@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { IconSunHigh, IconMoon } from "@tabler/icons";
@@ -11,13 +13,9 @@ export const ThemeToggler = () => {
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       aria-label="Toggle Dark Mode"
-      className="h-12 w-12 flex items-center justify-center hover:bg-[var(--hover-nav)] rounded-full"
+      className="flex items-center justify-center p-2 text-[var(--socials-buttons)] hover:text-[var(--foreground)] transition-colors duration-150 rounded"
     >
-      <span
-        className="text-3xl "
-      >
-        {theme === "light" ? <IconSunHigh /> : <IconMoon />}
-      </span>
+      {theme === "light" ? <IconSunHigh className="h-5 w-5" /> : <IconMoon className="h-5 w-5" />}
     </button>
   );
 };

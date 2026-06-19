@@ -1,37 +1,47 @@
 import "../styles/globals.css";
+import { Providers } from "./components/Providers";
+
+export const metadata = {
+  title: "Victor Pacheco | Full Stack Developer",
+  description:
+    "Portfolio de Victor Pacheco, Full Stack Developer especializado en React.js, Next.js, Node.js y más. Proyectos reales, código limpio.",
+  authors: [{ name: "Victor Pacheco" }],
+  keywords: ["Full Stack Developer", "React", "Next.js", "Node.js", "Portfolio", "Victor Pacheco"],
+  openGraph: {
+    title: "Victor Pacheco | Full Stack Developer",
+    description:
+      "Full Stack Developer especializado en React.js, Next.js y Node.js. Mirá mis proyectos y ponete en contacto.",
+    url: "https://portfolio-orpin-nu-45.vercel.app",
+    siteName: "Victor Pacheco Portfolio",
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Victor Pacheco | Full Stack Developer",
+    description: "Full Stack Developer — React, Next.js, Node.js.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    other: [
+      { rel: "icon", type: "image/png", sizes: "32x32", url: "/favicon-32x32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", url: "/favicon-16x16.png" },
+    ],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Vic Pacheco" />
-        <meta name="author" content="Vic Pacheco" />
-        <meta name="theme-color" content="#000000" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="icon" href="/favicon.ico" />
-        <title>Victor Pacheco 👨🏼‍💻</title>
-      </head>
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

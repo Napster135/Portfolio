@@ -1,90 +1,48 @@
-import {  IconSchool, IconBriefcase } from "@tabler/icons";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
+"use client";
 
-const educationHistory = [
-  
-  {
-    id: 1,
-    title: "Coder House",
-    text: "Full Stack Developer",
-    date: "enero 2022 - dicimbre 2023",
-  },
-  {
-    id: 2,
-    title: "Universidad de la Marina Mercante ",
-    text: "Licenciatura en Comercio y Negocios Intenacionales",
-    date: "Febrero 2020 - Diciembre 2024",
-  },
-  {
-    id: 3,
-    title: "Universidad  de Buenos Aires",
-    text: "Ingenieria",
-    date: "Marzo 2013 - Novuembre 2019",
-  }
-];
-const workHistory = [
-  {
-    id: 1,
-    title: "Freelance",
-    text: "CX  - Full stack Developer",
-    date: "Septiembre 2022 - Actualidad",
-    description: "",
-  },
-  {
-    id: 2,
-    title: "Hipcam S.A ",
-    text: " CX Manager",
-    date: "Septiembre 2022 - Julio 2024",
-    description: "",
-  },
-  {
-    id: 3,
-    title: "Tea Connection SA",
-    text: "Customer Service",
-    date: "Enero 2022 - septimebre 2022",
-    description: "",
-  },
-  {
-    id: 4,
-    title: "Telecom S.A",
-    text: "Customer Service",
-    date: "Enero 2013 - Octubre 2021",
-    description: "",
-  },
-];
+import { useLanguage } from "../../context/LanguageContext";
 
-export const TimeLine = ({ showEducation }) => {
+const HighlightItem = ({ role, org, date }) => (
+  <li className="flex flex-col gap-0.5">
+    <div className="flex items-baseline justify-between gap-4">
+      <span className="text-sm font-semibold text-[var(--foreground)]">{role}</span>
+      {date && (
+        <span className="text-xs text-[var(--text-secondary)] whitespace-nowrap flex-shrink-0">
+          {date}
+        </span>
+      )}
+    </div>
+    {org && <span className="text-xs text-[var(--text-secondary)]">{org}</span>}
+  </li>
+);
+
+export const TimeLine = () => {
+  const { t } = useLanguage();
+  const workHighlights = t("experience.work");
+  const educationHighlights = t("experience.education");
+
   return (
-    <VerticalTimeline>
-      {(showEducation ? educationHistory : workHistory).map((item) => (
-        <VerticalTimelineElement
-          key={item.id}
-          date={item.date}
-          iconStyle={{
-            background: "var(--bg-buttons)",
-            color: "#fff",
-            border: "none"
-           }}
-          icon={showEducation ? <IconSchool /> : <IconBriefcase />}
-          contentStyle={{
-            background: "transparent",
-            color: "var(--foreground)",
-            border: "1px solid var(--socials-buttons)",
-            boxShadow: "unset"
-          }}
-          contentArrowStyle={{
-            borderRight: "7px solid  var(--socials-buttons)",
-          }}
-           
-        >
-          <h3 className="vertical-timeline-element-title">{item.title}</h3>
-          <p>{item.text}</p>
-        </VerticalTimelineElement>
-      ))}
-    </VerticalTimeline>
+    <div className="grid sm:grid-cols-2 gap-6 mt-0">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest text-[var(--text-secondary)] mb-3">
+          {t("about.experienceLabel")}
+        </p>
+        <ul className="flex flex-col gap-2">
+          {workHighlights.map((item) => (
+            <HighlightItem key={item.role} {...item} />
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest text-[var(--text-secondary)] mb-3">
+          {t("about.educationLabel")}
+        </p>
+        <ul className="flex flex-col gap-2">
+          {educationHighlights.map((item) => (
+            <HighlightItem key={item.role} {...item} />
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };

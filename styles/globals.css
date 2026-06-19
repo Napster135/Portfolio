@@ -1,37 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./stars.css";
 
 :root {
   --mw-document: 1200px;
   --p-u-center: 0 32px;
-  /*   Text and Background Styles*/
-  --background: #202124;
-  --foreground: #e8eaed;
-  /*   Navbar Styles*/
-  --hover-nav: rgba(232, 234, 237, 0.04);
-  --text-secondary: #9aa0a6;
-  --nav-shadow: #141719;
 
-  /*   Buttons and Icon Styles*/
-  --bg-buttons: #604a84;
-  --bg-hover: hsla(0, 0%, 100%, 0.18);
-  --text-buttons: #f8faff;
-  --socials-buttons: #a8acb3;
+  /* Background */
+  --background: #08111f;
+  --foreground: #f8fafc;
+
+  /* Navbar */
+  --hover-nav: rgba(248, 250, 252, 0.04);
+  --text-secondary: #94a3b8;
+  --nav-shadow: #04080f;
+
+  /* Accent & Borders */
+  --bg-buttons: #3b82f6;
+  --bg-hover: #1f3152;
+  --text-buttons: #ffffff;
+  --socials-buttons: #94a3b8;
+
+  /* Form inputs */
+  --input-bg: #0d1b2e;
+  --input-border: #1f3152;
+  --input-border-focus: #3b82f6;
 }
 
 [data-theme="light"] {
-  /*   Text and Background Styles*/
-  --background: #fff;
-  --foreground: #0f0f0f;
+  --background: #f3f2ef;
+  --foreground: #1c1c1e;
 
-  /*   Navbar Styles*/
-  --hover-nav: rgba(32, 33, 36, 0.04);
-  --text-secondary: #5f6368;
-  --nav-shadow: #d5d6d8;
-  --socials-buttons: #57606a;
-  --bg-hover: hsla(0, 0%, 0%, 0.08);
+  --hover-nav: rgba(28, 28, 30, 0.05);
+  --text-secondary: #4b5563;
+  --nav-shadow: #d8d7d4;
+
+  --bg-buttons: #2563eb;
+  --bg-hover: #e4e3e0;
+  --text-buttons: #ffffff;
+  --socials-buttons: #4b5563;
+
+  /* Form inputs */
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-border-focus: #2563eb;
 }
 
 * {
@@ -53,7 +65,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
-  background-size: 400% 400%;
+  background-image: radial-gradient(ellipse 80% 40% at 50% -5%, rgba(59, 130, 246, 0.10) 0%, transparent 100%);
   background-attachment: fixed;
 }
 
@@ -67,10 +79,30 @@ a {
   margin: 0 auto;
   padding: var(--p-u-center);
 }
-#sobreMi,
-#misProyectos,
-#contactame {
-  padding-top: 80px;
+
+/* Desktop: consistent vertical rhythm in right column (no fixed nav to offset) */
+@media (min-width: 1024px) {
+  #sobreMi,
+  #misProyectos,
+  #skills,
+  #servicios,
+  #contactame {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+}
+
+/* Mobile/tablet: larger top padding to clear fixed header */
+@media (max-width: 1023px) {
+  #misProyectos {
+    padding-top: 120px;
+  }
+  #sobreMi,
+  #skills,
+  #servicios,
+  #contactame {
+    padding-top: 100px;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -93,11 +125,6 @@ a {
   }
 }
 
-.odd-project {
-  display: flex;
-
-  flex-direction: column;
-}
 .vertical-timeline::before {
   background-color: var(--socials-buttons) !important;
   border-radius: 10px;

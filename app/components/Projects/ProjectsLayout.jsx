@@ -1,17 +1,18 @@
-import { OthersProjects } from "./OthersProjects";
+"use client";
+
 import { ProjectCard } from "./ProjectCard";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const ProjectsLayout = () => {
+  const { t } = useLanguage();
   return (
     <section id="misProyectos" className="u-center">
-      <div className="w-full flex flex-col justify-center pt-4 items-center border-t-2 border-[var(--bg-hover)]">
-        <h1 className="text-4xl font-bold">Mis proyectos</h1>
-        <span className="text-base text-[var(--text-secondary)]">
-          Algunos de mis proyectos
-        </span>
+      <div className="w-full pt-4 border-t-2 border-[var(--bg-hover)]">
+        <p className="text-xs font-semibold uppercase tracking-widest text-[var(--text-secondary)]">
+          {t("projects.sectionLabel")}
+        </p>
       </div>
       <ProjectCard />
-      <OthersProjects />
     </section>
   );
 };
