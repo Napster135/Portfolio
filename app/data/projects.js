@@ -15,7 +15,7 @@ export const projects = [
   {
     id: 2,
     technologies: ["Next.js", "Node.js", "MongoDB", "Stripe", "JWT"],
-    githubUrl: "https://github.com/Napster135/Final-project-Backend",
-    webUrl: "https://final-project-backend-main.vercel.app/",
+    githubUrl: "https://github.com/Napster135/folio-bookstore",
+    webUrl: "https://folio-bookstore-two.vercel.app/",
   },
 ];
